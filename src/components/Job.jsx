@@ -5,37 +5,61 @@ import data from '../components/Data';
 import img1 from '../components/images/photosnap.svg';
 import Button from 'react-bootstrap/Button';
 
-export const Job = () => {
+export const Job = ({ currentItem, job }) => {
   const [person, setPerson] = useState(data);
   return (
     <>
       {person.map((item) => {
-        const { id, logo, company, position, postedAt, contract, location } =
-          item;
+        const {
+          id,
+          logo,
+          company,
+          position,
+          postedAt,
+          contract,
+          location,
+          languages,
+          role,
+          level,
+          tools,
+        } = item;
         return (
-          <>
-            <Card body key={id}>
+          <div>
+            <Card body key={id} style={{ width: '1440px' }} className="mb-5">
               <div>
-                <img src={img1} />
+                <div className="d-flex justify-content-start">
+                  <img src={img1} />
 
-                <Card.Link href="#">{company}</Card.Link>
-                <Button className="btn-success">New</Button>
-                <Button className="btn-dark">Featured</Button>
+                  <Card.Link href="# " className="mr-6 ml-6">
+                    {company}
+                  </Card.Link>
+                  <Button className="btn btn-success btn-xs ml-3 mr-6">
+                    New
+                  </Button>
+                  <Button className="btn-dark btn-xs ml-3 mr-6">
+                    Featured
+                  </Button>
+                </div>
+
                 <div>
-                  <b>{position}</b>
+                  <b className="d-flex justify-content-start">{position}</b>
+                  <div className="d-flex justify-content-end">
+                    <Button>{role}</Button>
+                    <Button>{level}</Button>
+                    <Button>{languages}</Button>
+                    <Button>{tools}</Button>
+                  </div>
                 </div>
                 <div>
-                  <p>{postedAt}</p>
+                  <span className="d-flex justify-content-start">
+                    <h6>{postedAt} .</h6>
+                    <h6>{contract} .</h6>
+                    <h6>{location} .</h6>
+                  </span>
                 </div>
-              </div>
-              <div>
-                <Card.Link href="#">senior</Card.Link>
-                <Card.Link href="#">html</Card.Link>
-                <Card.Link href="#">css</Card.Link>
-                <Card.Link href="#">javascript</Card.Link>
               </div>
             </Card>
-          </>
+          </div>
         );
       })}
       ;

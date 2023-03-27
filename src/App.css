@@ -40,3 +40,8 @@
 .read-the-docs {
   color: #888;
 }
+body {
+  background-color: hsl(180, 52%, 96%);
+  font-size: 15px;
+  font-weight: 500;
+}
